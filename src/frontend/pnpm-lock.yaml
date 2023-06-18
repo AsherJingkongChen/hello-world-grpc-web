@@ -1,0 +1,19 @@
+lockfileVersion: '6.0'
+
+devDependencies:
+  google-protobuf:
+    specifier: ^3.21.2
+    version: 3.21.2
+  grpc-web:
+    specifier: ^1.4.2
+    version: 1.4.2
+
+packages:
+
+  /google-protobuf@3.21.2:
+    resolution: {integrity: sha512-3MSOYFO5U9mPGikIYCzK0SaThypfGgS6bHqrUGXG3DPHCrb+txNqeEcns1W0lkGfk0rCyNXm7xB9rMxnCiZOoA==}
+    dev: true
+
+  /grpc-web@1.4.2:
+    resolution: {integrity: sha512-gUxWq42l5ldaRplcKb4Pw5O4XBONWZgz3vxIIXnfIeJj8Jc3wYiq2O4c9xzx/NGbbPEej4rhI62C9eTENwLGNw==}
+    dev: true

@@ -1,0 +1,8 @@
+.DS_Store
+.vscode
+.private
+
+__pycache__
+node_modules
+
+*.swp
