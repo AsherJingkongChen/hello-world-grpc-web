@@ -21,7 +21,9 @@ logging.basicConfig(
   datefmt = '%Y-%m-%dT%H:%M:%S%z',
 )
 
-address = 'localhost:50051'
+# Backend Address
+address = '127.0.0.1:9090'
+
 server = grpc_server(ThreadPoolExecutor(max_workers = 16))
 add_HelloWorldServicer_to_server(
   HelloWorldServicer(), server

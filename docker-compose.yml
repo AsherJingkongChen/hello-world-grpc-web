@@ -1,0 +1,10 @@
+version: '3'
+services:
+  envoy-proxy:
+    build:
+      context: ./
+      dockerfile: ./docker/envoy-proxy/Dockerfile
+    image: hello-world-grpc-web/envoy-proxy
+    ports:
+      # Frontend Address
+      - "8080:8080"
