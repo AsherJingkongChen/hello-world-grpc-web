@@ -19,11 +19,11 @@ export default function Page() {
       const request = new HelloWorldRequest();
       request.setUserName(userName);
 
-      const respond = await client.say_hello_world(
+      const response = await client.say_hello_world(
         request,
         { deadline: `${Date.now() + 3000}` },
       );
-      return respond.getText();
+      return respose.getText();
     },
     {
       errorRetryCount: 2,
