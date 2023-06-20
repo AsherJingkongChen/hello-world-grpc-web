@@ -6,5 +6,5 @@ services:
       dockerfile: ./docker/envoy-proxy/Dockerfile
     image: hello-world-grpc-web/envoy-proxy
     ports:
-      # Frontend Address
+      # Proxy Server Address
       - "8080:8080"
