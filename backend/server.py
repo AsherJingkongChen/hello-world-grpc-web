@@ -21,7 +21,7 @@ logging.basicConfig(
   datefmt = '%Y-%m-%dT%H:%M:%S%z',
 )
 
-# Backend Address
+# Server Address
 address = '127.0.0.1:9090'
 
 server = grpc_server(ThreadPoolExecutor(max_workers = 16))
