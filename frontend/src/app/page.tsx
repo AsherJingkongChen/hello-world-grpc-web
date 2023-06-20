@@ -23,7 +23,7 @@ export default function Page() {
         request,
         { deadline: `${Date.now() + 3000}` },
       );
-      return respose.getText();
+      return response.getText();
     },
     {
       errorRetryCount: 2,
