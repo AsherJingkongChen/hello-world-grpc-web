@@ -8,7 +8,7 @@ import {
 } from '../grpc_gen/Hello_worldServiceClientPb';
 import useSWR from 'swr';
 
-// API Proxy Address
+// Proxy Server Address
 const address = 'http://127.0.0.1:8080';
 const client = new HelloWorldClient(address);
 
