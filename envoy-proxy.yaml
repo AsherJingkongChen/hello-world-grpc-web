@@ -4,7 +4,7 @@
 static_resources:
   listeners:
     - name: hello_world_listener_0
-      # Frontend Address
+      # Proxy Server Address
       address:
         socket_address:
           address: 0.0.0.0
@@ -60,7 +60,7 @@ static_resources:
         endpoints:
           - lb_endpoints:
             - endpoint:
-                # Backend Address
+                # Server Address
                 address:
                   socket_address:
                     address: host.docker.internal # Use `address: host.docker.internal` for Win/Mac hosts
