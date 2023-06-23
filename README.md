@@ -19,6 +19,11 @@ docker compose up envoy-proxy
 cd frontend; npm run dev
 ```
 
+4. Generate gRPC codes
+```
+./scripts/generate_grpc_codes.sh
+```
+
 # Life of a request
 ```
 Website                 Proxy Server       Main Server
