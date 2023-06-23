@@ -4,13 +4,13 @@ package hello_world;
 
 service HelloWorld {
   rpc say_hello_world(HelloWorldRequest)
-    returns (HelloWorldRespond);
+    returns (HelloWorldResponse);
 }
 
 message HelloWorldRequest {
   string user_name = 1;
 }
 
-message HelloWorldRespond {
+message HelloWorldResponse {
   string text = 1;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const metadata = {
-  title: 'Title',
+  title: 'Hello World! gRPC-Web',
   description: 'Description',
 };
 
@@ -29,5 +29,5 @@ export default function RootLayout({
       </head>
       <body>{children}</body>
     </html>
-  )
+  );
 }

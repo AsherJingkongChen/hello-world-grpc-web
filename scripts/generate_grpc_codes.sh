@@ -3,7 +3,7 @@
 # **Prerequisites**
 # 1. python3 -m pip install grpcio-tools
 # 2. npm install -g protoc-gen-js
-# 3. Install protoc-gen-grpc-web from grpc-web releases
+# 3. Install protoc-gen-grpc-web from grpc-web releases page
 #   - https://github.com/grpc/grpc-web/releases
 
 python3 -m grpc_tools.protoc \

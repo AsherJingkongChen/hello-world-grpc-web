@@ -8,3 +8,6 @@ services:
     ports:
       # Proxy Server Address
       - "8080:8080"
+      # 3000 webiste
+      # 8080 send request
+      # 9090 request -> response

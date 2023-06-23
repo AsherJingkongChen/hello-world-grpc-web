@@ -43,28 +43,28 @@ export class HelloWorldClient {
     '/hello_world.HelloWorld/say_hello_world',
     grpcWeb.MethodType.UNARY,
     hello_world_pb.HelloWorldRequest,
-    hello_world_pb.HelloWorldRespond,
+    hello_world_pb.HelloWorldResponse,
     (request: hello_world_pb.HelloWorldRequest) => {
       return request.serializeBinary();
     },
-    hello_world_pb.HelloWorldRespond.deserializeBinary
+    hello_world_pb.HelloWorldResponse.deserializeBinary
   );
 
   say_hello_world(
     request: hello_world_pb.HelloWorldRequest,
-    metadata: grpcWeb.Metadata | null): Promise<hello_world_pb.HelloWorldRespond>;
+    metadata: grpcWeb.Metadata | null): Promise<hello_world_pb.HelloWorldResponse>;
 
   say_hello_world(
     request: hello_world_pb.HelloWorldRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: hello_world_pb.HelloWorldRespond) => void): grpcWeb.ClientReadableStream<hello_world_pb.HelloWorldRespond>;
+               response: hello_world_pb.HelloWorldResponse) => void): grpcWeb.ClientReadableStream<hello_world_pb.HelloWorldResponse>;
 
   say_hello_world(
     request: hello_world_pb.HelloWorldRequest,
     metadata: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: hello_world_pb.HelloWorldRespond) => void) {
+               response: hello_world_pb.HelloWorldResponse) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +

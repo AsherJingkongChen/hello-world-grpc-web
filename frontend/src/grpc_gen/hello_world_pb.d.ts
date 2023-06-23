@@ -20,19 +20,19 @@ export namespace HelloWorldRequest {
   }
 }
 
-export class HelloWorldRespond extends jspb.Message {
+export class HelloWorldResponse extends jspb.Message {
   getText(): string;
-  setText(value: string): HelloWorldRespond;
+  setText(value: string): HelloWorldResponse;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): HelloWorldRespond.AsObject;
-  static toObject(includeInstance: boolean, msg: HelloWorldRespond): HelloWorldRespond.AsObject;
-  static serializeBinaryToWriter(message: HelloWorldRespond, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): HelloWorldRespond;
-  static deserializeBinaryFromReader(message: HelloWorldRespond, reader: jspb.BinaryReader): HelloWorldRespond;
+  toObject(includeInstance?: boolean): HelloWorldResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: HelloWorldResponse): HelloWorldResponse.AsObject;
+  static serializeBinaryToWriter(message: HelloWorldResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): HelloWorldResponse;
+  static deserializeBinaryFromReader(message: HelloWorldResponse, reader: jspb.BinaryReader): HelloWorldResponse;
 }
 
-export namespace HelloWorldRespond {
+export namespace HelloWorldResponse {
   export type AsObject = {
     text: string,
   }

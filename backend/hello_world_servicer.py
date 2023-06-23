@@ -2,19 +2,20 @@
 
 from hello_world_pb2 import (
   HelloWorldRequest,
-  HelloWorldRespond,
+  HelloWorldResponse,
 )
 from hello_world_pb2_grpc import (
   HelloWorldServicer,
 )
+from typing import Iterator
 
 class HelloWorldServicer(HelloWorldServicer):
   def say_hello_world(
     self,
     request: HelloWorldRequest,
     context,
-  ) -> HelloWorldRespond:
-    respond = HelloWorldRespond(
-      text = f'{request.user_name} just said "Hello World!"!'
+  ) -> Iterator[HelloWorldResponse]:
+    response = HelloWorldResponse(
+      text = f'{request.user_name} just said "Hello World"!'
     )
-    return respond
+    return response

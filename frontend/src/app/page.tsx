@@ -19,15 +19,9 @@ export default function Page() {
       const request = new HelloWorldRequest();
       request.setUserName(userName);
 
-      const response = await client.say_hello_world(
-        request,
-        { deadline: `${Date.now() + 3000}` },
-      );
+      const response = await client.say_hello_world(request, null);
       return response.getText();
     },
-    {
-      errorRetryCount: 2,
-    }
   );
 
   if (isLoading) {
@@ -41,7 +35,7 @@ export default function Page() {
   }
   if (error) {
     return (
-      <p style={{ color: 'crimson' }}>{
+      <p style={{ color: 'red' }}>{
         `Error: ${error}`
       }</p>
     );

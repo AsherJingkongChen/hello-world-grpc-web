@@ -12,17 +12,21 @@ from hello_world_servicer import (
   HelloWorldServicer,
 )
 
-Path('./logs/').mkdir(exist_ok = True)
+log_dir = Path(__file__).parent.joinpath('logs/')
+log_dir.mkdir(exist_ok = True)
 
 logging.basicConfig(
-  filename = './logs/server.log',
+  handlers = [
+    logging.FileHandler(log_dir.joinpath('server.log')),
+    logging.StreamHandler(),
+  ],
   level = logging.INFO,
   format = '%(levelname)s|%(asctime)s|%(message)s',
   datefmt = '%Y-%m-%dT%H:%M:%S%z',
 )
 
-# Server Address
-address = '127.0.0.1:9090'
+# Main Server Address
+address = '127.0.0.1:8081'
 
 server = grpc_server(ThreadPoolExecutor(max_workers = 16))
 add_HelloWorldServicer_to_server(
@@ -33,10 +37,10 @@ server.add_insecure_port(address)
 logging.info('Starting the server ...')
 server.start()
 
-logging.info(f'The server is listening to http://{address}')
-
 try:
+  logging.info(f'The server is listening to http://{address}')
   server.wait_for_termination()
-except:
+except KeyboardInterrupt:
   pass
+
 logging.info('Terminating the server ...')

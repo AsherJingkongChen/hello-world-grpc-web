@@ -17,7 +17,7 @@ class HelloWorldStub(object):
         self.say_hello_world = channel.unary_unary(
                 '/hello_world.HelloWorld/say_hello_world',
                 request_serializer=hello__world__pb2.HelloWorldRequest.SerializeToString,
-                response_deserializer=hello__world__pb2.HelloWorldRespond.FromString,
+                response_deserializer=hello__world__pb2.HelloWorldResponse.FromString,
                 )
 
 
@@ -36,7 +36,7 @@ def add_HelloWorldServicer_to_server(servicer, server):
             'say_hello_world': grpc.unary_unary_rpc_method_handler(
                     servicer.say_hello_world,
                     request_deserializer=hello__world__pb2.HelloWorldRequest.FromString,
-                    response_serializer=hello__world__pb2.HelloWorldRespond.SerializeToString,
+                    response_serializer=hello__world__pb2.HelloWorldResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -61,6 +61,6 @@ class HelloWorld(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/hello_world.HelloWorld/say_hello_world',
             hello__world__pb2.HelloWorldRequest.SerializeToString,
-            hello__world__pb2.HelloWorldRespond.FromString,
+            hello__world__pb2.HelloWorldResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

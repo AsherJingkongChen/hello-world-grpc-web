@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11hello_world.proto\x12\x0bhello_world\"&\n\x11HelloWorldRequest\x12\x11\n\tuser_name\x18\x01 \x01(\t\"!\n\x11HelloWorldRespond\x12\x0c\n\x04text\x18\x01 \x01(\t2_\n\nHelloWorld\x12Q\n\x0fsay_hello_world\x12\x1e.hello_world.HelloWorldRequest\x1a\x1e.hello_world.HelloWorldRespondb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11hello_world.proto\x12\x0bhello_world\"&\n\x11HelloWorldRequest\x12\x11\n\tuser_name\x18\x01 \x01(\t\"\"\n\x12HelloWorldResponse\x12\x0c\n\x04text\x18\x01 \x01(\t2`\n\nHelloWorld\x12R\n\x0fsay_hello_world\x12\x1e.hello_world.HelloWorldRequest\x1a\x1f.hello_world.HelloWorldResponseb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'hello_world_pb2', globals())
@@ -22,8 +22,8 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   _HELLOWORLDREQUEST._serialized_start=34
   _HELLOWORLDREQUEST._serialized_end=72
-  _HELLOWORLDRESPOND._serialized_start=74
-  _HELLOWORLDRESPOND._serialized_end=107
-  _HELLOWORLD._serialized_start=109
-  _HELLOWORLD._serialized_end=204
+  _HELLOWORLDRESPONSE._serialized_start=74
+  _HELLOWORLDRESPONSE._serialized_end=108
+  _HELLOWORLD._serialized_start=110
+  _HELLOWORLD._serialized_end=206
 # @@protoc_insertion_point(module_scope)

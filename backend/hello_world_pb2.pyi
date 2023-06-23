@@ -10,7 +10,7 @@ class HelloWorldRequest(_message.Message):
     user_name: str
     def __init__(self, user_name: _Optional[str] = ...) -> None: ...
 
-class HelloWorldRespond(_message.Message):
+class HelloWorldResponse(_message.Message):
     __slots__ = ["text"]
     TEXT_FIELD_NUMBER: _ClassVar[int]
     text: str
