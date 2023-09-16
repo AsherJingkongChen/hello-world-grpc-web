@@ -8,6 +8,7 @@ from hello_world_pb2_grpc import (
   HelloWorldServicer,
 )
 from typing import Iterator
+from time import sleep
 
 class HelloWorldServicer(HelloWorldServicer):
   def say_hello_world(
@@ -15,7 +16,11 @@ class HelloWorldServicer(HelloWorldServicer):
     request: HelloWorldRequest,
     context,
   ) -> Iterator[HelloWorldResponse]:
-    response = HelloWorldResponse(
-      text = f'{request.user_name} just said "Hello World"!'
-    )
-    return response
+    _INTERVAL = 301
+    _COUNT = 25
+    for i in range(1, 1 + _COUNT):
+      response = HelloWorldResponse(
+        text = f'{request.user_name} just said "Hello World"! x{i}\n'
+      )
+      yield response
+      sleep(_INTERVAL)

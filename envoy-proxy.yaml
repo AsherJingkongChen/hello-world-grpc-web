@@ -29,9 +29,10 @@ static_resources:
                           prefix: "/"
                         route:
                           cluster: hello_world_service
-                          timeout: 0s
+                          max_grpc_timeout: 1s
+                          timeout: 1s
                           max_stream_duration:
-                            grpc_timeout_header_max: 0s
+                            grpc_timeout_header_max: 1s
                     cors:
                       allow_origin_string_match:
                         - prefix: "*"
@@ -60,7 +61,7 @@ static_resources:
         endpoints:
           - lb_endpoints:
             - endpoint:
-                # Server Address
+                # Main Server Address
                 address:
                   socket_address:
                     address: host.docker.internal # Use `address: host.docker.internal` for Win/Mac hosts

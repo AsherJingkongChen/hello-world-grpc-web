@@ -26,18 +26,18 @@ logging.basicConfig(
 )
 
 # Main Server Address
-address = '127.0.0.1:8081'
+address = '127.0.0.1:9090'
 
-server = grpc_server(ThreadPoolExecutor(max_workers = 16))
+server = grpc_server(ThreadPoolExecutor(4))
 add_HelloWorldServicer_to_server(
   HelloWorldServicer(), server
 )
 
 server.add_insecure_port(address)
 logging.info('Starting the server ...')
-server.start()
 
 try:
+  server.start()
   logging.info(f'The server is listening to http://{address}')
   server.wait_for_termination()
 except KeyboardInterrupt:

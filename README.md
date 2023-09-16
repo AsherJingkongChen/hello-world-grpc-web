@@ -28,7 +28,7 @@ cd frontend; npm run dev
 ```
 Website                 Proxy Server       Main Server
 (Downstream)            (Proxy)            (Upstream)
-:3000         ------->  :8080    ------->  :8081
+:3000         ------->  :8080    ------->  :9090
               HTTP/1.1           HTTP/2
               gRPC-Web           gRPC-Web
 ```

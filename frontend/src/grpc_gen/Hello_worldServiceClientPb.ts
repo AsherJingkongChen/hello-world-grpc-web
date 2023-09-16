@@ -31,7 +31,7 @@ export class HelloWorldClient {
                options?: null | { [index: string]: any; }) {
     if (!options) options = {};
     if (!credentials) credentials = {};
-    options['format'] = 'binary';
+    options['format'] = 'text';
 
     this.client_ = new grpcWeb.GrpcWebClientBase(options);
     this.hostname_ = hostname.replace(/\/+$/, '');
@@ -41,7 +41,7 @@ export class HelloWorldClient {
 
   methodDescriptorsay_hello_world = new grpcWeb.MethodDescriptor(
     '/hello_world.HelloWorld/say_hello_world',
-    grpcWeb.MethodType.UNARY,
+    grpcWeb.MethodType.SERVER_STREAMING,
     hello_world_pb.HelloWorldRequest,
     hello_world_pb.HelloWorldResponse,
     (request: hello_world_pb.HelloWorldRequest) => {
@@ -52,34 +52,13 @@ export class HelloWorldClient {
 
   say_hello_world(
     request: hello_world_pb.HelloWorldRequest,
-    metadata: grpcWeb.Metadata | null): Promise<hello_world_pb.HelloWorldResponse>;
-
-  say_hello_world(
-    request: hello_world_pb.HelloWorldRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.RpcError,
-               response: hello_world_pb.HelloWorldResponse) => void): grpcWeb.ClientReadableStream<hello_world_pb.HelloWorldResponse>;
-
-  say_hello_world(
-    request: hello_world_pb.HelloWorldRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.RpcError,
-               response: hello_world_pb.HelloWorldResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/hello_world.HelloWorld/say_hello_world',
-        request,
-        metadata || {},
-        this.methodDescriptorsay_hello_world,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/hello_world.HelloWorld/say_hello_world',
-    request,
-    metadata || {},
-    this.methodDescriptorsay_hello_world);
+    metadata?: grpcWeb.Metadata): grpcWeb.ClientReadableStream<hello_world_pb.HelloWorldResponse> {
+    return this.client_.serverStreaming(
+      this.hostname_ +
+        '/hello_world.HelloWorld/say_hello_world',
+      request,
+      metadata || {},
+      this.methodDescriptorsay_hello_world);
   }
 
 }

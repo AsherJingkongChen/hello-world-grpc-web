@@ -12,5 +12,5 @@ python3 -m grpc_tools.protoc \
   --pyi_out ./backend/ \
   --grpc_python_out ./backend/ \
   --js_out import_style=commonjs,binary:./frontend/src/grpc_gen/ \
-  --grpc-web_out import_style=typescript,mode=grpcweb:./frontend/src/grpc_gen/ \
+  --grpc-web_out import_style=typescript,mode=grpcwebtext:./frontend/src/grpc_gen/ \
   ./protos/*.proto;

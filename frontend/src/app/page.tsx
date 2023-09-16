@@ -6,33 +6,31 @@ import {
 import {
   HelloWorldClient,
 } from '../grpc_gen/Hello_worldServiceClientPb';
-import useSWR from 'swr';
+import { useEffect, useState } from 'react';
 
 // Proxy Server Address
 const address = 'http://127.0.0.1:8080';
 const client = new HelloWorldClient(address);
 
 export default function Page() {
-  const { data: text, error, isLoading } = useSWR(
-    'Edward',
-    async (userName) => {
-      const request = new HelloWorldRequest();
-      request.setUserName(userName);
+  const [text, setText] = useState('');
+  const [error, setError] = useState('');
 
-      const response = await client.say_hello_world(request, null);
-      return response.getText();
-    },
-  );
+  useEffect(() => {
+    const request = new HelloWorldRequest();
+    request.setUserName('Edward');
 
-  if (isLoading) {
-    return (<>
-      <p style={{
-        animation: 'blinking 0.5s linear infinite',
-      }}>{
-        'Loading ...'
-      }</p>
-    </>);
-  }
+    const responseStream = client.say_hello_world(request);
+    responseStream
+      .on('data', (response) => {
+        console.log(response.getText());
+        setText(response.getText());
+      })
+      .on('error', (err) => {
+        setError(`${err}`);
+      });
+  }, []);
+
   if (error) {
     return (
       <p style={{ color: 'red' }}>{
@@ -40,5 +38,15 @@ export default function Page() {
       }</p>
     );
   }
-  return <h1>{text}</h1>;
+  if (!text) {
+    return (<>
+      <p style={{
+        animation: 'blinking 0.5s linear infinite',
+      }}>{
+        'Loading ...'
+      }</p>
+    </>);
+  } else {
+    return <h1>{text}</h1>;
+  }
 }
