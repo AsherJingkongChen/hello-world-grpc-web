@@ -4,12 +4,12 @@
 This repository is a development-level template, built for learning gRPC-Web.
 
 # Run
-1. Proxy Server (Port 8080 -> 8081)
+1. Proxy Server (Port 8080 -> 9090)
 ```
 docker compose up envoy-proxy
 ```
 
-2. Main Server (Port 8081)
+2. Main Server (Port 9090)
 ```
 ./backend/server.py
 ```

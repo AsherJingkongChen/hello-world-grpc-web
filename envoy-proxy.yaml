@@ -19,6 +19,9 @@ static_resources:
                 - name: envoy.access_loggers.stdout
                   typed_config:
                     "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+              stream_idle_timeout: 5s
+              request_headers_timeout: 0.1s
+              request_timeout: 1s
               route_config:
                 name: local_route
                 virtual_hosts:
@@ -29,10 +32,7 @@ static_resources:
                           prefix: "/"
                         route:
                           cluster: hello_world_service
-                          max_grpc_timeout: 1s
-                          timeout: 1s
-                          max_stream_duration:
-                            grpc_timeout_header_max: 1s
+                          timeout: 0s
                     cors:
                       allow_origin_string_match:
                         - prefix: "*"
@@ -52,7 +52,7 @@ static_resources:
                     "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
   clusters:
     - name: hello_world_service
-      connect_timeout: 0.25s
+      connect_timeout: 1s
       type: LOGICAL_DNS
       http2_protocol_options: {}
       lb_policy: round_robin

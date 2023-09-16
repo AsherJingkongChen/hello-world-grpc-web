@@ -16,11 +16,11 @@ class HelloWorldServicer(HelloWorldServicer):
     request: HelloWorldRequest,
     context,
   ) -> Iterator[HelloWorldResponse]:
-    _INTERVAL = 301
+    _INTERVAL = 1
     _COUNT = 25
     for i in range(1, 1 + _COUNT):
       response = HelloWorldResponse(
-        text = f'{request.user_name} just said "Hello World"! x{i}\n'
+        text = f'{request.user_name} just said "Hello World"! x{i}'
       )
       yield response
       sleep(_INTERVAL)
