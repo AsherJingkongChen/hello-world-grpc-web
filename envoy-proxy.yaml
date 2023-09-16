@@ -19,7 +19,6 @@ static_resources:
                 - name: envoy.access_loggers.stdout
                   typed_config:
                     "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
-              stream_idle_timeout: 5s
               request_headers_timeout: 0.1s
               request_timeout: 1s
               route_config:
@@ -33,6 +32,7 @@ static_resources:
                         route:
                           cluster: hello_world_service
                           timeout: 0s
+                          idle_timeout: 5s
                     cors:
                       allow_origin_string_match:
                         - prefix: "*"
